@@ -3,10 +3,7 @@ import { useForm } from 'react-hook-form';
 import useWindowSize from '../../../hooks/useWindowSize.hook';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -38,32 +35,35 @@ const About: React.FC = () => {
 				<Box
 					css={{ minWidth: 100 }}
 					style={{ border: 'solid red 2px' }}
-					justifyContent="center"
 					display={size.width && size.width < 904 ? 'flex' : null}
+					justifyContent={size.width && size.width < 904 ? 'space-between' : 'space-around'}
 				>
-					<Box p={1}>
+					<Box pb={0}>
 						<Typography variant="h5" onClick={() => currentSet('about')} id="about">
 							About
 						</Typography>
 					</Box>
-					<Box p={1}>
+					<Box pb={0}>
 						<Typography variant="h5" onClick={() => currentSet('learn')}>
 							Learn
 						</Typography>
 					</Box>
-					<Box p={1}>
+					<Box pb={0}>
 						<Typography variant="h5" onClick={() => currentSet('teach')}>
 							Teach
 						</Typography>
 					</Box>
-					<Box p={1}>
+					<Box pb={0}>
 						<Typography variant="h5" onClick={() => currentSet('sign up')}>
-							Sign Up
+							Sign-Up
 						</Typography>
 					</Box>
+					{/* <div>
+						{size.width}px / {size.height}px
+					</div> */}
 				</Box>
 				<Box p={3} style={{ border: 'solid red 2px', maxWidth: '700px' }}>
-					{current == 'about' ? (
+					{current === 'about' ? (
 						<React.Fragment>
 							<Typography variant="h3">About Us</Typography>
 							<Typography variant="h5">
@@ -76,7 +76,7 @@ const About: React.FC = () => {
 								varius gravida congue. Etiam nunc nibh, ultrices eu mi non, euismod vestibulum dolor.
 							</Typography>
 						</React.Fragment>
-					) : current == 'learn' ? (
+					) : current === 'learn' ? (
 						<React.Fragment>
 							<Typography variant="h3">Learn with people that care</Typography>
 							<Typography variant="h5">
@@ -92,7 +92,7 @@ const About: React.FC = () => {
 								faucibus.
 							</Typography>
 						</React.Fragment>
-					) : current == 'teach' ? (
+					) : current === 'teach' ? (
 						<React.Fragment>
 							<Typography variant="h3">Teach those that want to learn</Typography>
 							<Typography variant="h5">
@@ -105,14 +105,14 @@ const About: React.FC = () => {
 								nascetur ridiculus mus.
 							</Typography>
 						</React.Fragment>
-					) : current == 'sign up' ? (
-						<Box>
+					) : current === 'sign up' ? (
+						<Box style={size.width && size.width > 904 ? { maxWidth: '700px' } : {}}>
 							<Box mb={3}>
 								<Typography variant="h3">Sign Up!</Typography>
 							</Box>
-							<Box display="flex" justifyContent="center" style={{ border: 'solid red 2px' }}>
+							<Box justifyContent="center" style={{ border: 'solid red 2px' }}>
 								<form onSubmit={onSubmit}>
-									<Box display="flex">
+									<Box display={size.width && size.width > 404 ? 'flex' : null}>
 										<Box m={3}>
 											<TextField
 												id="standard-basic"
